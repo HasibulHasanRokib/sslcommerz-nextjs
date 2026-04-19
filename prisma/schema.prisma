@@ -1,0 +1,57 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id           String        @id @default(cuid())
+  name         String
+  email        String        @unique
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  subscription Subscription?
+  payments     Payment[]
+}
+
+model Subscription {
+  id        String   @id @default(cuid())
+  planId    String
+  amount    Int
+  active    Boolean  @default(false)
+  startDate DateTime @default(now())
+  endDate   DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId    String   @unique
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+enum PaymentStatus {
+  PENDING
+  VALID
+  FAILED
+  CANCELLED
+}
+
+enum PaymentType {
+  SUBSCRIPTION
+  ONE_TIME
+}
+
+model Payment {
+  id            String        @id @default(cuid())
+  tranId        String        @unique
+  valId         String?
+  amount        Int
+  status        PaymentStatus @default(PENDING)
+  type          PaymentType   @default(ONE_TIME)
+  paymentMethod String?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  userId        String
+  user          User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
