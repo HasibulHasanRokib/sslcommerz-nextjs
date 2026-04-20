@@ -6,9 +6,9 @@ const APP_URL = process.env.NEXT_PUBLIC_APP_URL;
 
 export async function POST(
   req: NextRequest,
-  { params }: { params: { status: string } },
+  { params }: { params: Promise<{ status: string }> },
 ) {
-  const { status } = params;
+  const { status } = await params;
 
   const formData = await req.formData();
   const data = Object.fromEntries(formData.entries());

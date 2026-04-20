@@ -1,5 +1,10 @@
+import { Suspense } from "react";
 import { SubscriptionPlan } from "./subscription-plan";
 
 export default function Page() {
-  return <SubscriptionPlan />;
+  return (
+    <Suspense>
+      <SubscriptionPlan />
+    </Suspense>
+  );
 }
