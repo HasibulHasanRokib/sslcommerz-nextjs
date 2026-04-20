@@ -12,7 +12,7 @@ export default function Page() {
           <Link href={"/subscriptions"}>Upgrade plan</Link>
         </Button>
         <Button size={"lg"} className="py-6 px-8">
-          <Link href={"/subscriptions"}>Buy Now</Link>
+          <Link href={"/products"}>Buy Now</Link>
         </Button>
       </div>
     </div>
