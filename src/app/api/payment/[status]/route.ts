@@ -22,12 +22,14 @@ export async function POST(
     );
   }
 
+  let redirectUrl = `${APP_URL}/subscriptions`;
+
   try {
     if (status === "success") {
       await db.payment.findUnique({
         where: { tranId: tranId, status: "VALID" },
       });
-      return redirect(`${APP_URL}/thank-you?tran_id=${tranId}`);
+      redirectUrl = `${APP_URL}/thank-you?tran_id=${tranId}`;
     }
 
     if (status === "fail") {
@@ -35,7 +37,7 @@ export async function POST(
         where: { tranId: tranId },
         data: { status: "FAILED" },
       });
-      return redirect(`${APP_URL}/subscriptions?error=payment_failed`);
+      redirectUrl = `${APP_URL}/subscriptions?error=payment_failed`;
     }
 
     if (status === "cancel") {
@@ -43,12 +45,11 @@ export async function POST(
         where: { tranId: tranId },
         data: { status: "CANCELLED" },
       });
-      return redirect(`${APP_URL}/subscriptions?error=payment_cancelled`);
+      redirectUrl = `${APP_URL}/subscriptions?error=payment_cancelled`;
     }
-
-    return redirect(`${APP_URL}/subscriptions`);
   } catch (error) {
     console.error("Payment Route Error:", error);
-    return redirect(`${APP_URL}/subscriptions?error=something_went_wrong`);
+    redirectUrl = `${APP_URL}/subscriptions?error=something_went_wrong`;
   }
+  redirect(redirectUrl);
 }
