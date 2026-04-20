@@ -28,10 +28,7 @@ export function SubscriptionPlan() {
       } else if (error === "something_went_wrong") {
         toast.error("An unexpected error occurred.");
       }
-      const timeout = setTimeout(() => {
-        router.replace("/subscriptions");
-      }, 1000);
-      return () => clearTimeout(timeout);
+      router.replace("/subscriptions", { scroll: false });
     }
   }, [error, router]);
 
