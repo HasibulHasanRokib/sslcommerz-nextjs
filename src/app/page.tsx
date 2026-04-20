@@ -7,9 +7,14 @@ export default function Page() {
       <h1 className="font-bold text-4xl leading-relaxed">
         SSLCommerz payment gateway
       </h1>
-      <Button size={"lg"} className="py-6 px-8">
-        <Link href={"/subscriptions"}>Upgrade plan</Link>
-      </Button>
+      <div className="flex gap-4 items-center">
+        <Button size={"lg"} className="py-6 px-8">
+          <Link href={"/subscriptions"}>Upgrade plan</Link>
+        </Button>
+        <Button size={"lg"} className="py-6 px-8">
+          <Link href={"/products"}>Buy Now</Link>
+        </Button>
+      </div>
     </div>
   );
 }
