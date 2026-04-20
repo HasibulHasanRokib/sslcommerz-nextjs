@@ -12,7 +12,6 @@ export async function getPaymentStatus({ tranId }: { tranId: string }) {
     const payment = await db.payment.findFirst({
       where: { tranId, userId: user.id },
     });
-    console.log(payment);
 
     if (!payment) throw new Error("Payment does not exist");
 

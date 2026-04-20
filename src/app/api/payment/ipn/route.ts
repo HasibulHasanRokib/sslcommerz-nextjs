@@ -12,8 +12,6 @@ export async function POST(req: NextRequest) {
       formData,
     ) as unknown as SSLCommerzIPNData;
 
-    console.log({ data });
-
     const { tran_id, val_id, status, value_a: planId } = data;
 
     if (!tran_id || !val_id) {

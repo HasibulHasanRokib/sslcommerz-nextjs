@@ -5,8 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { formatPrice } from "@/lib/utils";
 import { plans } from "@/lib/subscription";
-import { useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useEffect, useState, useTransition } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { subscriptionSession } from "./action";
 import { toast } from "sonner";
 import { Spinner } from "@/components/ui/spinner";
@@ -15,6 +15,25 @@ export function SubscriptionPlan() {
   const [isPending, startTransition] = useTransition();
   const [loadingPlanId, setLoadingPlanId] = useState<string | null>(null);
   const router = useRouter();
+
+  const searchParams = useSearchParams();
+  const error = searchParams.get("error");
+
+  useEffect(() => {
+    if (error) {
+      if (error === "payment_cancelled") {
+        toast.error("Payment was cancelled by the user.");
+      } else if (error === "payment_failed") {
+        toast.error("Payment failed. Please try again.");
+      } else if (error === "something_went_wrong") {
+        toast.error("An unexpected error occurred.");
+      }
+      const timeout = setTimeout(() => {
+        router.replace("/subscriptions");
+      }, 1000);
+      return () => clearTimeout(timeout);
+    }
+  }, [error, router]);
 
   const handleCheckout = (planId: string) => {
     setLoadingPlanId(planId);

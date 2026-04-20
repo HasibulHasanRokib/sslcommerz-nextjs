@@ -34,9 +34,9 @@ export async function subscriptionSession({ planId }: { planId: string }) {
       total_amount: plan.price,
       tran_id: tranId,
 
-      success_url: `${APP_URL}/thank-you?tran_id=${tranId}`,
-      fail_url: `${APP_URL}/subscriptions`,
-      cancel_url: `${APP_URL}/subscriptions`,
+      success_url: `${APP_URL}/api/payment/success`,
+      fail_url: `${APP_URL}/api/payment/fail`,
+      cancel_url: `${APP_URL}/api/payment/cancel`,
       ipn_url: `${APP_URL}/api/payment/ipn`,
 
       cus_name: "Hasibul Hasan Rokib",
