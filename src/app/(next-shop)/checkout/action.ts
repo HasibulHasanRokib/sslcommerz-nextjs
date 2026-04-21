@@ -121,16 +121,14 @@ export async function checkoutSession(data: z.infer<typeof checkoutSchema>) {
       product_category: "physical-goods",
       product_profile: "physical-goods",
       num_of_item: items.length,
-      shipping_method: "YES",
-      ship_name: name,
-      ship_add1: address,
-      ship_city: address,
-      ship_country: "Bangladesh",
+      shipping_method: "NO",
       value_b: order.id,
     });
 
     if (!sslSession.GatewayPageURL)
-      throw new Error(" Failed to initiate payment session: ");
+      throw new Error(
+        " Failed to initiate payment session: " + sslSession.failedreason,
+      );
 
     return { url: sslSession.GatewayPageURL };
   } catch (err) {
