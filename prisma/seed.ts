@@ -21,6 +21,7 @@ async function main() {
           "https://epwzesmp9vjqcvrw.public.blob.vercel-storage.com/shop/tee.png",
         category: "tops",
         slug: "tee",
+        stock: 10,
       },
       {
         name: "Joggers",
@@ -31,6 +32,7 @@ async function main() {
           "https://epwzesmp9vjqcvrw.public.blob.vercel-storage.com/shop/joggers.png",
         category: "shorts",
         slug: "joggers",
+        stock: 10,
       },
       {
         name: "Tennis Shoes",
@@ -41,6 +43,7 @@ async function main() {
           "https://epwzesmp9vjqcvrw.public.blob.vercel-storage.com/shop/tennis-shoes.png",
         category: "shoes",
         slug: "tennis-shoes",
+        stock: 10,
       },
       {
         name: "Overshirt",
@@ -51,6 +54,7 @@ async function main() {
           "https://epwzesmp9vjqcvrw.public.blob.vercel-storage.com/shop/overshirt.png",
         category: "tops",
         slug: "overshirt",
+        stock: 10,
       },
       {
         name: "Bomber Jacket",
@@ -61,6 +65,7 @@ async function main() {
           "https://epwzesmp9vjqcvrw.public.blob.vercel-storage.com/shop/bomber-jacket.png",
         category: "tops",
         slug: "bomber-jacket",
+        stock: 10,
       },
       {
         name: "Beach Shirt",
@@ -71,6 +76,7 @@ async function main() {
           "https://epwzesmp9vjqcvrw.public.blob.vercel-storage.com/shop/beach-shirt.png",
         category: "tops",
         slug: "beach-shirt",
+        stock: 10,
       },
       {
         name: "Shorts",
@@ -81,6 +87,7 @@ async function main() {
           "https://epwzesmp9vjqcvrw.public.blob.vercel-storage.com/shop/shorts.png",
         category: "shorts",
         slug: "shorts",
+        stock: 10,
       },
       {
         name: "Puffer Jacket",
@@ -91,6 +98,7 @@ async function main() {
           "https://epwzesmp9vjqcvrw.public.blob.vercel-storage.com/shop/puffer-jacket.png",
         category: "tops",
         slug: "puffer-jacket",
+        stock: 10,
       },
       {
         name: "Basketball Shoes",
@@ -101,6 +109,7 @@ async function main() {
           "https://epwzesmp9vjqcvrw.public.blob.vercel-storage.com/shop/basketball-shoes.png",
         category: "shoes",
         slug: "basketball-shoes",
+        stock: 10,
       },
     ],
   });
