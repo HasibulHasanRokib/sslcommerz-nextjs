@@ -72,9 +72,10 @@ export function CheckoutPage() {
       if (!response.url) {
         toast.error(response.error);
         return;
+      } else {
+        clearCart();
+        router.push(response.url);
       }
-      clearCart();
-      router.push(response.url);
     });
   }
 
