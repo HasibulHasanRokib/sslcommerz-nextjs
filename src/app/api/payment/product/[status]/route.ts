@@ -22,7 +22,7 @@ export async function POST(
     );
   }
 
-  let redirectUrl = `${APP_URL}/checkout`;
+  let redirectUrl = `${APP_URL}/cart`;
 
   try {
     if (status === "success") {
@@ -37,7 +37,7 @@ export async function POST(
         where: { tranId: tranId },
         data: { status: "FAILED" },
       });
-      redirectUrl = `${APP_URL}/checkout?error=payment_failed`;
+      redirectUrl = `${APP_URL}/cart?error=payment_failed`;
     }
 
     if (status === "cancel") {
@@ -45,11 +45,11 @@ export async function POST(
         where: { tranId: tranId },
         data: { status: "CANCELLED" },
       });
-      redirectUrl = `${APP_URL}/checkout?error=payment_cancelled`;
+      redirectUrl = `${APP_URL}/cart?error=payment_cancelled`;
     }
   } catch (error) {
     console.error("Payment Product Route Error:", error);
-    redirectUrl = `${APP_URL}/checkout?error=something_went_wrong`;
+    redirectUrl = `${APP_URL}/cart?error=something_went_wrong`;
   }
   redirect(redirectUrl);
 }

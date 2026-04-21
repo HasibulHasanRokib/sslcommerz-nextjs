@@ -40,11 +40,6 @@ export function CheckoutPage() {
     }
   }, [error, router]);
 
-  if (items.length === 0) {
-    router.push("/cart");
-    return null;
-  }
-
   async function handleSubmit() {
     const parsed = checkoutSchema.safeParse(form);
     if (!parsed.success) {
@@ -72,10 +67,9 @@ export function CheckoutPage() {
       if (!response.url) {
         toast.error(response.error);
         return;
-      } else {
-        clearCart();
-        router.push(response.url);
       }
+      clearCart();
+      router.push(response.url);
     });
   }
 
