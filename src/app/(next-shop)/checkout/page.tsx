@@ -1,10 +1,10 @@
 import { Suspense } from "react";
-import { SubscriptionPlan } from "./subscriptions";
+import { CheckoutPage } from "./checkout";
 
 export default function Page() {
   return (
     <Suspense>
-      <SubscriptionPlan />
+      <CheckoutPage />
     </Suspense>
   );
 }

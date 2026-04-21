@@ -3,7 +3,7 @@
 import { Payment } from "@/lib/generated/prisma/client";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState, useTransition } from "react";
-import { getPaymentStatus } from "./actions";
+import { getPaymentStatus } from "./action";
 import { Spinner } from "@/components/ui/spinner";
 import { Button } from "@/components/ui/button";
 

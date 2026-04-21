@@ -2,7 +2,7 @@
 
 import { db } from "@/lib/db";
 import { initiateSSLPayment } from "@/lib/sslcommerz";
-import { plans } from "@/lib/subscription";
+import { plans } from "@/lib/subscription-data";
 import { generateTransactionId } from "@/lib/utils";
 
 export async function subscriptionSession({ planId }: { planId: string }) {
@@ -34,9 +34,9 @@ export async function subscriptionSession({ planId }: { planId: string }) {
       total_amount: plan.price,
       tran_id: tranId,
 
-      success_url: `${APP_URL}/api/payment/success`,
-      fail_url: `${APP_URL}/api/payment/fail`,
-      cancel_url: `${APP_URL}/api/payment/cancel`,
+      success_url: `${APP_URL}/api/payment/subscription/success`,
+      fail_url: `${APP_URL}/api/payment/subscription/fail`,
+      cancel_url: `${APP_URL}/api/payment/subscription/cancel`,
       ipn_url: `${APP_URL}/api/payment/ipn`,
 
       cus_name: "Hasibul Hasan Rokib",
