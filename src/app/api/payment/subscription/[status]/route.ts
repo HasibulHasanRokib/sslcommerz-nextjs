@@ -13,6 +13,8 @@ export async function POST(
   const formData = await req.formData();
   const data = Object.fromEntries(formData.entries());
 
+  console.log("Subscription Data", data);
+
   const tranId = data.tran_id as string;
 
   if (!tranId) {

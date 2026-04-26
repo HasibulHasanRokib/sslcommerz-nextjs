@@ -12,6 +12,8 @@ export async function POST(req: NextRequest) {
       formData,
     ) as unknown as SSLCommerzIPNData;
 
+    console.log("IPN Data", data);
+
     const { tran_id, val_id, status, value_a: planId, value_b: orderId } = data;
 
     if (!tran_id || !val_id) {
@@ -39,6 +41,7 @@ export async function POST(req: NextRequest) {
 
     if (status === "VALID") {
       const validation = await validateSSLCommerzTransaction(val_id);
+      console.log("IPN validation", validation);
 
       const receivedAmount = parseFloat(validation.amount);
 
